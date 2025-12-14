@@ -2,61 +2,262 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SonamuTown</title>
+  <title>SonamuTown | Learn Korean Together</title>
+
+  <!-- SEO -->
+  <meta name="description" content="SonamuTown is a free global community where people around the world learn Korean together." />
+  <meta name="keywords" content="Learn Korean, Korean Community, Free Korean Study, SonamuTown" />
+  <meta name="author" content="SonamuTown" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SonamuTown 🌲" />
+  <meta property="og:description" content="A free global community to learn Korean together." />
+  <meta property="og:type" content="website" />
+
   <style>
-    body {
+    /* Reset */
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #f6f7f5;
+      background: linear-gradient(135deg, #d0f0c0, #f6f7f5);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      text-align: center;
     }
+
+    /* Card */
     .card {
       background: white;
       padding: 40px;
-      border-radius: 16px;
-      text-align: center;
-      max-width: 360px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border-radius: 20px;
+      max-width: 380px;
+      width: 90%;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1;
     }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+    }
+
     h1 {
       margin-bottom: 10px;
+      font-size: 30px;
     }
+
     p {
       color: #555;
-      font-size: 14px;
-      margin-bottom: 30px;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
+
+    .tagline {
+      font-size: 14px;
+      color: #2f855a;
+      font-weight: 600;
+      margin-bottom: 25px;
+    }
+
     button {
       background: #2f855a;
       color: white;
       border: none;
-      padding: 14px 20px;
-      border-radius: 10px;
+      padding: 16px 24px;
+      border-radius: 12px;
       font-size: 16px;
       cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
     }
+
     button:hover {
       background: #276749;
+      transform: scale(1.05);
+    }
+
+    .lang {
+      margin-top: 20px;
+      font-size: 13px;
+      cursor: pointer;
+      color: #777;
+    }
+
+    /* Popup */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      z-index: 999;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      opacity: 0;
+      background: white;
+      padding: 30px 35px;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      transition: all 0.4s ease;
+      z-index: 1000;
+      max-width: 320px;
+      width: 90%;
+    }
+
+    .popup.show {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+
+    .popup h2 {
+      margin-bottom: 10px;
+    }
+
+    .popup a {
+      display: block;
+      margin-top: 12px;
+      color: #2f855a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .close-btn {
+      margin-top: 18px;
+      background: #e53e3e;
+    }
+
+    /* Footer */
+    .footer {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .footer a {
+      color: #2f855a;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 6px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer span {
+      color: #aaa;
     }
   </style>
 </head>
+
 <body>
+
   <div class="card">
     <h1>🌲 SonamuTown</h1>
-    <p>
+    <p id="desc">
       A free global community<br/>
       to learn Korean together.
     </p >
-    <button onclick="start()">Start Learning Korean</button>
+
+    <div class="tagline" id="tagline">
+      Powered by kindness & consistency
+    </div>
+
+    <button onclick="start()" aria-label="Start learning Korean">
+      Start Learning Korean
+    </button>
+
+    <div class="lang" onclick="toggleLang()">
+      🌐 English / 한국어
+    </div>
   </div>
 
+  <!-- Popup -->
+  <div class="overlay" id="overlay"></div>
+  <div class="popup" id="popup" role="dialog" aria-modal="true">
+    <h2>Welcome to SonamuTown 🌲</h2>
+    <p>
+      Learners from over 100 countries are studying Korean together.
+    </p >
+
+    < a href=" " target="_blank" rel="noopener">
+      🧵 Join us on Threads
+    </ a>
+    < a href="https://hellotalk.com/u/sonamutown" target="_blank" rel="noopener">
+      💬 Find us on HelloTalk
+    </ a>
+
+    <button class="close-btn" onclick="closePopup()">Close</button>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    < a href="https://www.threads.com/@sonamutown?invite=0" target="_blank" rel="noopener">
+      🧵 Threads @sonamutown
+    </ a>
+    <span>·</span>
+    < a href="https://hellotalk.com/u/sonamutown" target="_blank" rel="noopener">
+      💬 HelloTalk @sonamutown
+    </ a>
+  </footer>
+
   <script>
+    let isEnglish = true;
+
     function start() {
-      alert("Welcome to SonamuTown 🌲\nLet's learn Korean together!");
+      document.getElementById('popup').classList.add('show');
+      document.getElementById('overlay').classList.add('show');
+    }
+
+    function closePopup() {
+      document.getElementById('popup').classList.remove('show');
+      document.getElementById('overlay').classList.remove('show');
+    }
+
+    document.getElementById('overlay').addEventListener('click', closePopup);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closePopup();
+    });
+
+    function toggleLang() {
+      isEnglish = !isEnglish;
+
+      document.getElementById('desc').innerHTML = isEnglish
+        ? 'A free global community<br/>to learn Korean together.'
+        : '전 세계 사람들이 함께<br/>한국어를 배우는 무료 커뮤니티';
+
+      document.getElementById('tagline').innerText = isEnglish
+        ? 'Powered by kindness & consistency'
+        : '꾸준함과 따뜻함으로 성장하는 커뮤니티';
     }
   </script>
+
 </body>
 </html>
