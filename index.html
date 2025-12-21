@@ -3,268 +3,218 @@
 <head>
   <meta charset="UTF-8" />
   <title>SonamuTown | Learn Korean Together</title>
-
-  <meta name="description" content="SonamuTown is a free global community where people around the world learn Korean together." />
-  <meta name="keywords" content="Learn Korean, Korean Community, Free Korean Study, SonamuTown" />
-  <meta name="author" content="SonamuTown" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta property="og:title" content="SonamuTown 🌲" />
-  <meta property="og:description" content="A free global community to learn Korean together." />
-  <meta property="og:type" content="website" />
-  
+  <meta name="description" content="SonamuTown: A movement to spread Hangeul to the world. A free global community." />
   <link rel="icon" href="https://fav.farm/🌲" />
 
   <style>
-    /* Reset & Base */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    :root {
+      --primary: #2f855a;
+      --text: #2d3748;
+      --light-text: #718096;
+      --bg-gradient: linear-gradient(135deg, #d0f0c0, #f6f7f5);
     }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(135deg, #d0f0c0, #f6f7f5);
+      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text);
+      line-height: 1.8;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      height: 100vh;
-      text-align: center;
-      -webkit-font-smoothing: antialiased;
+      padding: 60px 20px;
     }
 
-    /* Animations */
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Card */
-    .card {
+    /* Hero Card */
+    .hero-card {
       background: white;
-      padding: 40px;
-      border-radius: 20px;
-      max-width: 380px;
-      width: 90%;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 50px 30px;
+      border-radius: 30px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      text-align: center;
+      margin-bottom: 50px;
       animation: fadeInUp 0.8s ease-out;
-      z-index: 1;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 45px rgba(0,0,0,0.15);
-    }
-
-    h1 {
-      margin-bottom: 10px;
-      font-size: 30px;
-    }
-
-    p {
-      color: #555;
-      font-size: 15px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .tagline {
-      font-size: 14px;
-      color: #2f855a;
-      font-weight: 600;
-      margin-bottom: 25px;
-    }
-
-    button {
-      background: #2f855a;
+    .hero-card h1 { font-size: 32px; margin-bottom: 15px; }
+    .hero-card p { font-size: 18px; color: var(--light-text); margin-bottom: 30px; }
+    
+    .main-btn {
+      background: var(--primary);
       color: white;
       border: none;
-      padding: 16px 24px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 600;
+      padding: 20px 40px;
+      border-radius: 15px;
+      font-size: 18px;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.2s ease;
       width: 100%;
+      transition: 0.3s;
     }
+    .main-btn:hover { background: #276749; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(47, 133, 90, 0.2); }
 
-    button:hover {
-      background: #276749;
-      transform: translateY(-2px);
-    }
-
-    button:active {
-      transform: scale(0.98);
-    }
-
-    .lang-toggle {
-      margin-top: 20px;
-      font-size: 13px;
-      cursor: pointer;
-      color: #777;
-      display: inline-block;
-      padding: 5px 10px;
-    }
-
-    .lang-toggle:hover {
-      color: #2f855a;
-    }
-
-    /* Popup & Overlay */
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
+    /* Charter Manifesto Section */
+    .charter-container {
+      max-width: 650px;
       width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 999;
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      padding: 70px 45px;
+      border-radius: 35px;
+      animation: fadeInUp 1s ease-out;
+      margin-bottom: 60px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
     }
 
-    .overlay.show {
-      opacity: 1;
-      pointer-events: all;
+    .charter-header { text-align: center; margin-bottom: 60px; }
+    .charter-header h2 { font-size: 26px; color: var(--primary); letter-spacing: -0.02em; }
+    .charter-header .sub-motto { font-size: 15px; color: var(--primary); margin-top: 8px; font-weight: 700; opacity: 0.8; }
+
+    .divider { height: 1px; background: #cbd5e0; margin: 45px 0; border: none; opacity: 0.5; }
+
+    section { margin-bottom: 50px; }
+    h3 { font-size: 21px; margin-bottom: 20px; color: #1a202c; border-left: 4px solid var(--primary); padding-left: 15px; }
+    .content-p { white-space: pre-line; font-size: 16px; color: #4a5568; }
+    
+    ul { list-style: none; }
+    li { margin-bottom: 20px; padding-left: 25px; position: relative; }
+    li::before { content: "🌲"; position: absolute; left: 0; font-size: 12px; top: 4px; }
+    li strong { display: block; color: var(--primary); margin-bottom: 4px; font-size: 17px; }
+
+    .vision-quote {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--primary);
+      text-align: center;
+      margin: 40px 0;
+      padding: 30px 10px;
+      border-top: 1px solid #e2e8f0;
+      border-bottom: 1px solid #e2e8f0;
+      font-family: serif;
     }
 
+    /* Popup Modal */
+    .overlay { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); opacity:0; pointer-events:none; transition:0.3s; z-index:999; }
+    .overlay.show { opacity:1; pointer-events:all; }
     .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.9);
-      opacity: 0;
-      background: white;
-      padding: 30px 35px;
-      border-radius: 16px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      z-index: 1000;
-      max-width: 340px;
-      width: 90%;
-      pointer-events: none;
+      position: fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(0.9);
+      opacity:0; background:white; padding:45px; border-radius:30px; z-index:1000;
+      width: 90%; max-width: 400px; transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      text-align: center;
     }
+    .popup.show { opacity:1; transform:translate(-50%, -50%) scale(1); }
+    .popup a { display: block; padding: 16px; margin-top: 12px; border: 1px solid #edf2f7; border-radius: 14px; color: var(--primary); text-decoration: none; font-weight: 600; transition: 0.2s; }
+    .popup a:hover { background: #f0fff4; border-color: var(--primary); }
+    .close-btn { background: #e53e3e; margin-top: 25px; color: white; border: none; padding: 14px; border-radius: 12px; cursor: pointer; width: 100%; font-weight: 600; }
 
-    .popup.show {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
-      pointer-events: all;
-    }
+    footer { text-align: center; color: var(--light-text); font-size: 14px; padding-bottom: 60px; }
+    footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
 
-    .popup h2 {
-      margin-bottom: 15px;
-      font-size: 22px;
+    /* Lang Toggle Button */
+    .lang-toggle {
+      position: fixed; bottom: 30px; right: 30px; background: var(--primary); color: white; 
+      padding: 12px 24px; border-radius: 50px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); 
+      cursor: pointer; font-size: 15px; z-index: 100; font-weight: 700; transition: 0.3s;
     }
-
-    .popup .social-links {
-      margin: 20px 0;
-    }
-
-    .popup a {
-      display: block;
-      margin-top: 12px;
-      color: #2f855a;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 10px;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      transition: background 0.2s;
-    }
-
-    .popup a:hover {
-      background: #f0fff4;
-    }
-
-    .close-btn {
-      margin-top: 10px;
-      background: #e53e3e;
-    }
-
-    .close-btn:hover {
-      background: #c53030;
-    }
-
-    /* Footer */
-    .footer {
-      position: fixed;
-      bottom: 20px;
-      width: 100%;
-      font-size: 13px;
-      color: #666;
-    }
-
-    .footer a {
-      color: #2f855a;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    .footer span {
-      color: #ccc;
-      margin: 0 5px;
-    }
+    .lang-toggle:hover { transform: scale(1.05); background: #276749; }
   </style>
 </head>
-
 <body>
 
-  <div class="card">
-    <h1>🌲 SonamuTown</h1>
-    <p id="desc">
-      A free global community<br/>
-      to learn Korean together.
-    </p>
+  <div class="lang-toggle" onclick="toggleLang()">🌐 EN / KO</div>
 
-    <div class="tagline" id="tagline">
-      Powered by kindness & consistency
-    </div>
-
-    <button id="mainBtn" onclick="start()" aria-label="Start learning Korean">
-      Start Learning Korean
-    </button>
-
-    <div class="lang-toggle" onclick="toggleLang()">
-      🌐 English / 한국어
-    </div>
+  <div class="hero-card">
+    <h1 id="heroTitle">🌲 SonamuTown</h1>
+    <p id="heroDesc">A free global community<br/>to learn Korean together.</p>
+    <button class="main-btn" onclick="openPopup()" id="mainBtn">Start Learning Korean</button>
   </div>
 
-  <div class="overlay" id="overlay"></div>
-  <div class="popup" id="popup" role="dialog" aria-modal="true">
-    <h2 id="popupTitle">Welcome to SonamuTown 🌲</h2>
-    <p id="popupDesc">
-      Learners from over 100 countries are studying Korean together.
-    </p>
-
-    <div class="social-links">
-      <a href="https://www.threads.net/@sonamutown" target="_blank" rel="noopener">
-        🧵 Join us on Threads
-      </a>
-      <a href="https://hellotalk.com/u/sonamutown" target="_blank" rel="noopener">
-        💬 Find us on HelloTalk
-      </a>
+  <div class="charter-container">
+    <div class="charter-header">
+      <h2 id="cMainTitle">🌏 SonamuTown</h2>
+      <p class="sub-motto" id="cSubMotto">한글을 전 세계로!</p>
     </div>
 
-    <button class="close-btn" id="closeBtn" onclick="closePopup()">Close</button>
+    <section>
+      <h3 id="cSec1Title">우리는 이렇게 시작했다</h3>
+      <p class="content-p" id="cSec1Body">소나무타운은 유행을 만들기 위해 시작되지 않았다.
+      돈을 벌기 위해서도, 빠르게 성장하기 위해서도 아니다.
+
+      우리는 단 하나의 믿음에서 시작했다.
+
+      언어는 사람을 연결하고, 한글은 그 연결을 더 깊게 만든다.</p>
+    </section>
+
+    <section>
+      <h3 id="cSec2Title">우리의 사명 (Mission)</h3>
+      <p class="content-p" id="cSec2Body">우리는 한글을 전 세계로 전파한다.
+      혼자가 아니라, 함께 배우고, 함께 실수하며, 함께 성장하면서.</p>
+    </section>
+
+    <hr class="divider">
+
+    <section>
+      <h3 id="cSec3Title">우리의 신념 (Beliefs)</h3>
+      <ul>
+        <li><strong id="cB1">사람을 이해하는 언어</strong>한글은 시험을 위한 언어가 아니다. 사람을 이해하기 위한 언어다.</li>
+        <li><strong id="cB2">경쟁이 아닌 연결</strong>배움은 경쟁이 아니라 연결이다.</li>
+        <li><strong id="cB3">성장의 증거</strong>실수는 부끄러움이 아니라 성장의 증거다.</li>
+        <li><strong id="cB4">지속되는 성장</strong>빠른 성장은 중요하지 않다. 지속되는 성장이 전부다.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h3 id="cSec4Title">우리가 지키는 약속 (Promises)</h3>
+      <ul>
+        <li id="cP1">우리는 언제나 열려 있다. 국적, 나이, 실력, 배경을 묻지 않는다.</li>
+        <li id="cP2">우리는 무료의 가치를 존중한다. 배움은 특권이 아니라 기회이기 때문이다.</li>
+        <li id="cP3">우리는 사람을 숫자로 보지 않는다. 한 사람, 한 이야기를 존중한다.</li>
+      </ul>
+    </section>
+
+    <div class="divider"></div>
+
+    <section>
+      <h3 id="cSec5Title" style="text-align: center; border: none; padding: 0;">우리가 꿈꾸는 미래 (Vision)</h3>
+      <div class="vision-quote">“I started learning Korean at SonamuTown.”</div>
+      <p style="text-align: center; font-size: 16px; color: var(--light-text);" id="cSec5Body">그 말이 한글이 세상과 연결된 증거이기 때문입니다.</p>
+    </section>
+
+    <section style="text-align: center; margin-bottom: 0;">
+      <h3 id="cSec6Title" style="border: none; padding: 0;">우리의 약속 (Oath)</h3>
+      <p class="content-p" id="cSec6Body" style="font-weight: 500; font-size: 17px;">우리는 느리게 갈 수 있다. 우리는 작게 시작했을 수 있다. 그러나 우리는 멈추지 않는다.
+
+      소나무타운은 플랫폼이 아니라 운동(Movement)이다. 그리고 이 운동은 지금도 계속되고 있다.</p>
+    </section>
   </div>
 
-  <footer class="footer">
-    <a href="https://www.threads.net/@sonamutown" target="_blank" rel="noopener">Threads @sonamutown</a>
-    <span>·</span>
-    <a href="https://hellotalk.com/u/sonamutown" target="_blank" rel="noopener">HelloTalk @sonamutown</a>
+  <div class="overlay" id="overlay" onclick="closePopup()"></div>
+  <div class="popup" id="popup">
+    <h2 id="pTitle">Join the Movement 🌲</h2>
+    <p id="pDesc" style="margin-bottom: 25px; color: #666;">Study Korean with people from 100+ countries.</p>
+    <a href="https://www.threads.net/@sonamutown" target="_blank">🧵 Join us on Threads</a>
+    <a href="https://hellotalk.com/u/sonamutown" target="_blank">💬 Find us on HelloTalk</a>
+    <button class="close-btn" id="pClose" onclick="closePopup()">Close</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 SonamuTown · <a href="https://www.threads.net/@sonamutown" target="_blank">Threads</a> · <a href="https://hellotalk.com/u/sonamutown" target="_blank">HelloTalk</a></p>
   </footer>
 
   <script>
-    let isEnglish = true;
+    let isEnglish = false;
 
-    function start() {
+    function openPopup() {
       document.getElementById('popup').classList.add('show');
       document.getElementById('overlay').classList.add('show');
     }
@@ -274,44 +224,71 @@
       document.getElementById('overlay').classList.remove('show');
     }
 
-    // Close on overlay click
-    document.getElementById('overlay').addEventListener('click', closePopup);
-
-    // Close on Escape key
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closePopup();
-    });
-
     function toggleLang() {
       isEnglish = !isEnglish;
-
-      // Card Elements
-      document.getElementById('desc').innerHTML = isEnglish
-        ? 'A free global community<br/>to learn Korean together.'
-        : '전 세계 사람들이 함께<br/>한국어를 배우는 무료 커뮤니티';
-
-      document.getElementById('tagline').innerText = isEnglish
-        ? 'Powered by kindness & consistency'
-        : '꾸준함과 따뜻함으로 성장하는 커뮤니티';
       
-      document.getElementById('mainBtn').innerText = isEnglish
-        ? 'Start Learning Korean'
-        : '한국어 공부 시작하기';
+      // Hero & Popup (Same as before)
+      document.getElementById('heroDesc').innerHTML = isEnglish ? 'A free global community<br/>to learn Korean together.' : '전 세계 사람들이 함께<br/>한국어를 배우는 무료 커뮤니티';
+      document.getElementById('mainBtn').innerText = isEnglish ? 'Start Learning Korean' : '한국어 공부 시작하기';
+      document.getElementById('pTitle').innerText = isEnglish ? 'Join the Movement 🌲' : '함께 시작해요 🌲';
+      document.getElementById('pDesc').innerText = isEnglish ? 'Study Korean with people from 100+ countries.' : '100개국 이상의 친구들과 함께 공부하세요.';
+      document.getElementById('pClose').innerText = isEnglish ? 'Close' : '닫기';
 
-      // Popup Elements
-      document.getElementById('popupTitle').innerText = isEnglish
-        ? 'Welcome to SonamuTown 🌲'
-        : '소나무타운에 오신 걸 환영합니다 🌲';
+      // Charter Section - English Translation
+      if(isEnglish) {
+        document.getElementById('cSubMotto').innerText = 'Bringing Hangeul to the World!';
+        document.getElementById('cSec1Title').innerText = 'How We Started';
+        document.getElementById('cSec1Body').innerText = 'SonamuTown was not started to create a trend, to make money, or to grow fast.\n\nWe started with a single belief:\n\nLanguage connects people, and Hangeul makes that connection deeper.';
+        
+        document.getElementById('cSec2Title').innerText = 'Our Mission';
+        document.getElementById('cSec2Body').innerText = 'We spread Hangeul to the entire world.\nNot alone, but by learning together, making mistakes together, and growing together.';
+        
+        document.getElementById('cSec3Title').innerText = 'Our Beliefs';
+        document.getElementById('cB1').innerText = 'Language for Understanding';
+        document.getElementById('cB1').nextSibling.textContent = 'Hangeul is not a language for exams. It is a language for understanding people.';
+        document.getElementById('cB2').innerText = 'Connection, Not Competition';
+        document.getElementById('cB2').nextSibling.textContent = 'Learning is not a competition; it is a connection.';
+        document.getElementById('cB3').innerText = 'Evidence of Growth';
+        document.getElementById('cB3').nextSibling.textContent = 'Mistakes are not a source of shame, but evidence of growth.';
+        document.getElementById('cB4').innerText = 'Lasting Growth';
+        document.getElementById('cB4').nextSibling.textContent = 'Fast growth is not what matters. Lasting growth is everything.';
 
-      document.getElementById('popupDesc').innerText = isEnglish
-        ? 'Learners from over 100 countries are studying Korean together.'
-        : '100개국 이상의 학습자들이 함께 한국어를 공부하고 있습니다.';
-      
-      document.getElementById('closeBtn').innerText = isEnglish
-        ? 'Close'
-        : '닫기';
+        document.getElementById('cSec4Title').innerText = 'Our Promises';
+        document.getElementById('cP1').innerText = 'We are always open. We do not ask for your nationality, age, level, or background.';
+        document.getElementById('cP2').innerText = 'We respect the value of being free. Because learning is an opportunity, not a privilege.';
+        document.getElementById('cP3').innerText = 'We do not see people as numbers. We respect each individual and every story.';
+
+        document.getElementById('cSec5Title').innerText = 'Our Vision';
+        document.getElementById('cSec5Body').innerText = 'Because those words are the proof that Hangeul has connected with the world.';
+        
+        document.getElementById('cSec6Title').innerText = 'Our Oath';
+        document.getElementById('cSec6Body').innerText = 'We may go slow. We may have started small. But we do not stop.\n\nSonamuTown is not a platform; it is a Movement. And this movement is still going on right now.';
+      } else {
+        // Back to Korean
+        document.getElementById('cSubMotto').innerText = '한글을 전 세계로!';
+        document.getElementById('cSec1Title').innerText = '우리는 이렇게 시작했다';
+        document.getElementById('cSec1Body').innerText = '소나무타운은 유행을 만들기 위해 시작되지 않았다.\n돈을 벌기 위해서도, 빠르게 성장하기 위해서도 아니다.\n\n우리는 단 하나의 믿음에서 시작했다.\n\n언어는 사람을 연결하고, 한글은 그 연결을 더 깊게 만든다.';
+        document.getElementById('cSec2Title').innerText = '우리의 사명 (Mission)';
+        document.getElementById('cSec2Body').innerText = '우리는 한글을 전 세계로 전파한다.\n혼자가 아니라, 함께 배우고, 함께 실수하며, 함께 성장하면서.';
+        document.getElementById('cSec3Title').innerText = '우리의 신념 (Beliefs)';
+        document.getElementById('cB1').innerText = '사람을 이해하는 언어';
+        document.getElementById('cB1').nextSibling.textContent = '한글은 시험을 위한 언어가 아니다. 사람을 이해하기 위한 언어다.';
+        document.getElementById('cB2').innerText = '경쟁이 아닌 연결';
+        document.getElementById('cB2').nextSibling.textContent = '배움은 경쟁이 아니라 연결이다.';
+        document.getElementById('cB3').innerText = '성장의 증거';
+        document.getElementById('cB3').nextSibling.textContent = '실수는 부끄러움이 아니라 성장의 증거다.';
+        document.getElementById('cB4').innerText = '지속되는 성장';
+        document.getElementById('cB4').nextSibling.textContent = '빠른 성장은 중요하지 않다. 지속되는 성장이 전부다.';
+        document.getElementById('cSec4Title').innerText = '우리가 지키는 약속 (Promises)';
+        document.getElementById('cP1').innerText = '우리는 언제나 열려 있다. 국적, 나이, 실력, 배경을 묻지 않는다.';
+        document.getElementById('cP2').innerText = '우리는 무료의 가치를 존중한다. 배움은 특권이 아니라 기회이기 때문이다.';
+        document.getElementById('cP3').innerText = '우리는 사람을 숫자로 보지 않는다. 한 사람, 한 이야기를 존중한다.';
+        document.getElementById('cSec5Title').innerText = '우리가 꿈꾸는 미래 (Vision)';
+        document.getElementById('cSec5Body').innerText = '그 말이 한글이 세상과 연결된 증거이기 때문입니다.';
+        document.getElementById('cSec6Title').innerText = '우리의 약속 (Oath)';
+        document.getElementById('cSec6Body').innerText = '우리는 느리게 갈 수 있다. 우리는 작게 시작했을 수 있다. 그러나 우리는 멈추지 않는다.\n\n소나무타운은 플랫폼이 아니라 운동(Movement)이다. 그리고 이 운동은 지금도 계속되고 있다.';
+      }
     }
   </script>
-
 </body>
 </html>
